@@ -1,0 +1,110 @@
+<link rel='stylesheet' href='/stylesheets/index.css' />
+
+<div id="formHolder" class="flex"> 
+    <div class="form1">
+        <form action="/createUser" method="post" class="flex">
+            <h3>User Details</h3>
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="name">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="email">
+            <label for="mobile" >Mobile</label>
+            <input type="number" placeholder="mobile" name="number">
+            <input type="submit" value="CreateUser">
+        </form>
+        {{#each user}}
+            <ul>
+                <li>{{name}} , {{email}}</li>
+            </ul>
+        {{/each}}
+    </div>
+    <div class="form2">
+        <form action="/createTask" method="post" class="flex">
+            <h3>Task Details</h3>
+
+            <label for="user">Select user</label>
+            <select name="user" id="">
+                {{#each user}}
+                   <option value={{user_id}}>{{name}}</option>
+                {{/each}}
+            </select>
+
+            <label for="taskName">TaskName</label>
+            <input type="text" name="taskName" placeholder="TaskName">
+
+            <label for="TaskType">TaskType</label>
+            <select name="TaskType" id="">
+                <option value="Pending">Pending</option>
+                <option value="Done">Done</option>
+            </select>
+
+            <input type="submit" value="CreateTask">
+        </form>
+
+         {{#each task}}
+            <ul>
+                <li>{{taskName}} , {{TaskType}}</li>
+            </ul>
+        {{/each}}
+
+        <button><a href="/export">Export to a Excel file</a></button>
+        <a href="/download" download> download excel file</a>
+    </div>
+
+    
+    
+
+</div>
+
+
+<script>
+
+    
+
+
+    let form = document.querySelector(".form1 form");
+    let email = document.querySelector("form input[type = email]");
+    let number = document.querySelector("form input[type = number]");
+
+     //validate number
+
+    function phonenumber(inputtxt , e){
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if(inputtxt.value.match(phoneno)){
+            return true;
+            }
+            else{
+                e.preventDefault();
+                alert("Mobile number incoorect");
+                return false;
+            }
+        }
+
+     
+    
+    //validate email
+    function ValidateEmail(mail , e) {
+    var validRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (mail.value.match(validRegex)) {
+        return true;
+    } else {
+        e.preventDefault();
+        alert("Invalid email address!");
+        email.focus();
+        return false;
+    }
+    }
+    
+
+   
+
+    form.addEventListener("submit", function(e){
+        ValidateEmail(email , e)
+        phonenumber(number , e)
+    })
+
+
+    
+</script>
+

@@ -1,0 +1,64 @@
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#formHolder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.form1 , .form2{
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid red;
+}
+
+.form1 form , .form2 form{
+    margin-top: 20px;
+    width: 50%;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px -5px rgb(68, 68, 68);
+    flex-direction: column;
+    background-color:pink;
+}
+
+.form1 input , .form2 input , .form2 select{
+    margin-bottom: 10px;
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: none;
+    background-color: rgb(238, 245, 245);
+}
+
+.form1 h3 , .form2 h3{
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.form2 select option{
+    padding: 10px 20px;
+}
+
+
+.form1 ul  , .form2  ul {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.form2 button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: -100px;
+    background-color: antiquewhite;
+}
+
+.form2 button a{
+    text-decoration: none;
+    color: red;
+}
